@@ -1,0 +1,13 @@
+[
+  {
+    "role": "Undergraduate Research Assistant",
+    "organization": "OSI Lab - University of Calgary",
+    "period": "May 2024 - Present",
+    "responsibilities": [
+      "Developing and training machine learning models on multi-layered and high-resolution satellite imagery to improve the precision and speed of land cover mapping",
+      "Collaborating closely with PhD students and professors on a major Classification project, applying deep learning architectures such as CNNs and RNNs for pixel-level analysis",
+      "Designing data pipelines for preprocessing, model training, and validation using Python, with geospatial frameworks like GDAL and TensorFlow",
+      "Conducting research that impacts environmental understanding and decision-making in areas such as sustainable land management, disaster response, and urban development planning"
+    ]
+  }
+]
