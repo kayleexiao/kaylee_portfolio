@@ -3,33 +3,74 @@
 @tailwind utilities;
 
 :root {
-  --brand-pink: #f472b6;
-  --brand-pink-light: #fce7f3;
-  --brand-pink-dark: #ec4899;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  /* Palette colors from /public/assets/mocks/palette.png */
+  --rose-600: #F56B80;  /* Bright pink (Crayola) */
+  --rose-500: #F56B80;  /* Bright pink (Crayola) - same as 600 */
+  --rose-400: #FAB6C0;  /* Cherry blossom pink */
+  --rose-300: #FAB6C0;  /* Cherry blossom pink - same as 400 */
+  --rose-200: #F6F2ED;  /* Isabelline */
+  
+  /* Surface and text colors */
+  --surface: #FFF9F1;   /* Floral white */
+  --ink: #293949;       /* Charcoal */
+  
+  /* Legacy brand colors (keep for compatibility) */
+  --brand-pink: #F56B80;
+  --brand-pink-light: #FAB6C0;
+  --brand-pink-dark: #F56B80;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  color: var(--ink);
+  background: 
+    radial-gradient(circle at top left, var(--rose-200) 0%, transparent 50%),
+    radial-gradient(circle at bottom right, var(--surface) 0%, transparent 50%),
+    linear-gradient(135deg, #ffffff 0%, var(--surface) 100%);
+  min-height: 100vh;
 }
 
-.gradient-hero {
-  background: linear-gradient(135deg, #fce7f3 0%, #f3e8ff 100%);
+::selection {
+  background-color: var(--rose-300);
+  color: var(--ink);
 }
 
-.card-shadow {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-cuprum), system-ui, sans-serif;
+  }
+  
+  a {
+    @apply no-underline;
+  }
 }
 
-.card-shadow-hover {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+html {
+  scroll-behavior: smooth;
+}
+
+@layer utilities {
+  .sheen::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+    border-radius: inherit;
+    pointer-events: none;
+    mix-blend-mode: soft-light;
+  }
+  
+  .hero-radial {
+    background:
+      radial-gradient(1200px 600px at 25% 25%, rgba(255, 114, 160, .20), transparent 60%),
+      radial-gradient(900px 500px at 70% 40%, rgba(255, 192, 209, .20), transparent 55%),
+      linear-gradient(to bottom right, rgba(255,255,255,.92), rgba(255,245,249,.92));
+  }
+  
+  .line-thin { 
+    height: 1px; 
+    background: linear-gradient(90deg, transparent, var(--rose-500), transparent); 
+    opacity: .9; 
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

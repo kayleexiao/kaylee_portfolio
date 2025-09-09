@@ -1,12 +1,12 @@
-import './globals.css'
-import { Inter } from 'next/font/google'
-import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import { Metadata } from 'next'
+import { Cuprum } from 'next/font/google'
+import './globals.css'
 
-const inter = Inter({ 
+const cuprum = Cuprum({ 
   subsets: ['latin'],
-  variable: '--font-inter',
+  weight: ['400', '700'],
+  variable: '--font-cuprum',
   display: 'swap',
 })
 
@@ -46,9 +46,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body className={`${inter.className} min-h-screen flex flex-col`}>
-        <Nav />
+    <html lang="en" className={cuprum.variable}>
+      <body className={`${cuprum.className} antialiased min-h-screen flex flex-col`}>
         <main className="flex-1">
           {children}
         </main>

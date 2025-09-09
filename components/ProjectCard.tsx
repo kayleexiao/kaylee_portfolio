@@ -1,11 +1,11 @@
 'use client'
 
+import Badge from '@/components/ui/Badge'
+import Card from '@/components/ui/Card'
 import { motion } from 'framer-motion'
+import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
-import Card from '@/components/ui/Card'
-import Badge from '@/components/ui/Badge'
 
 interface Project {
   slug: string
@@ -30,21 +30,22 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
     >
       <Link href={`/projects/${project.slug}`}>
         <Card hover className="p-6 h-full flex flex-col group">
-          <div className="relative w-20 h-20 mx-auto mb-4">
+          <div className="h-16 w-16 rounded-xl overflow-hidden bg-white/80 mx-auto mb-4 flex items-center justify-center">
             <Image
               src={project.image}
               alt={`${project.title} logo`}
-              fill
-              className="object-cover rounded-xl"
-              sizes="80px"
+              width={64}
+              height={64}
+              className="object-contain"
+              unoptimized
             />
           </div>
           
-          <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-brand-pink transition-colors">
+          <h3 className="text-xl font-bold text-ink mb-2 group-hover:text-rose-500 transition-colors">
             {project.title}
           </h3>
           
-          <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-1">
+          <p className="text-ink/70 text-sm leading-relaxed mb-4 flex-1">
             {project.description}
           </p>
           
