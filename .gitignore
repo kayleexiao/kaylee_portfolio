@@ -43,3 +43,10 @@ Thumbs.db
 .directory
 .Spotlight-V100
 .Trashes
+
+# local planning
+docs/**
+!docs/.keep
+
+public/assets/current/**
+public/assets/mocks/**

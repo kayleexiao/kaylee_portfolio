@@ -1,13 +1,13 @@
 'use client'
 
-import { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Send, Github, Linkedin, Check, AlertCircle } from 'lucide-react'
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { AnimatePresence, motion } from 'framer-motion'
+import { AlertCircle, Check, Github, Linkedin, Send } from 'lucide-react'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 
 const contactSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
@@ -62,19 +62,8 @@ export default function ContactForm() {
   }
 
   return (
-    <section className="py-20 gradient-hero">
-      <div className="container mx-auto max-w-3xl px-4">
-        <Card className="p-8 md:p-12">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-pink mb-4">
-              CONTACT ME
-            </h2>
-            <p className="text-gray-600">
-              Let's connect — I'd love to hear from you!
-            </p>
-          </div>
-
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+    <Card className="p-8 md:p-12">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div>
               <label htmlFor="email" className="sr-only">
                 Email
@@ -84,7 +73,7 @@ export default function ContactForm() {
                 type="email"
                 id="email"
                 placeholder="Email"
-                className="w-full px-4 py-3 bg-brand-pink-light border border-transparent rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-pink focus:border-transparent transition-all duration-200 placeholder-gray-500"
+                className="w-full px-4 py-3 bg-white/80 border border-rose-200/60 rounded-2xl focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all duration-200 placeholder-ink/50"
                 disabled={isSubmitting}
               />
               <AnimatePresence>
@@ -111,7 +100,7 @@ export default function ContactForm() {
                 id="message"
                 rows={6}
                 placeholder="Message"
-                className="w-full px-4 py-3 bg-brand-pink-light border border-transparent rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-pink focus:border-transparent transition-all duration-200 placeholder-gray-500 resize-none"
+                className="w-full px-4 py-3 bg-white/80 border border-rose-200/60 rounded-2xl focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all duration-200 placeholder-ink/50 resize-none"
                 disabled={isSubmitting}
               />
               <AnimatePresence>
@@ -209,9 +198,7 @@ export default function ContactForm() {
                 </a>
               </div>
             </div>
-          </form>
-        </Card>
-      </div>
-    </section>
+      </form>
+    </Card>
   )
 }

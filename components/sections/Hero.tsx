@@ -1,56 +1,71 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { ChevronDown, Heart } from 'lucide-react'
+import { SHELL } from '@/components/layout/Wide'
+import Reveal from '@/components/motion/Reveal'
+import Card from '@/components/ui/Card'
+import IntroDivider from '@/components/ui/IntroDivider'
+import TypewriterText from '@/components/ui/TypewriterText'
+import { useMatchNavWidth } from '@/hooks/useMatchNavWidth'
 
 export default function Hero() {
+  // Runtime width sync hook (ensures pixel-perfect match)
+  useMatchNavWidth()
+
   return (
-    <section className="min-h-screen gradient-hero flex items-center justify-center relative overflow-hidden">
-      <div className="container mx-auto max-w-7xl px-4 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="space-y-6"
-        >
-          <div className="space-y-2">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-light text-gray-800">
-              hi, i'm
-            </h1>
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold text-brand-pink">
-              kaylee xiao
-            </h2>
-          </div>
-          
-          <div className="flex items-center justify-center space-x-4 text-gray-600">
-            <div className="w-12 h-px bg-gray-300"></div>
-            <Heart className="w-5 h-5 text-brand-pink" />
-            <div className="w-12 h-px bg-gray-300"></div>
-          </div>
-          
-          <h3 className="text-xl md:text-2xl text-gray-700 font-medium">
-            computer science student
-          </h3>
-          
-          <p className="text-gray-600 text-lg">
+    <section id="intro" className="hero min-h-[100svh] grid place-items-center pt-[120px] pb-[120px]">
+      <div className="flex flex-col items-center gap-8 md:gap-10">
+        <Reveal>
+          <Card className={`relative rounded-3xl bg-white/85 hero-radial sheen shadow-pink ${SHELL}`} data-shell="hero-card">
+              <div className="p-10 md:p-16 text-center space-y-4">
+                {/* Small line */}
+                <div 
+                  className="font-extrabold text-ink/90"
+                  style={{ fontSize: 'calc(var(--intro-small) * var(--intro-scale) * var(--intro-fine))' }}
+                >
+                  hi, i'm
+                </div>
+                
+                {/* Big display name */}
+                <div 
+                  className="font-extrabold text-[var(--rose-500)] leading-[0.9] whitespace-nowrap max-[900px]:whitespace-normal"
+                  style={{ fontSize: 'calc(var(--intro-big) * var(--intro-scale) * var(--intro-fine))' }}
+                >
+                  kaylee xiao
+                </div>
+                
+                {/* Divider with star */}
+                <IntroDivider size="xl" />
+                
+                {/* Subtitle with typewriter */}
+                <div 
+                  className="mt-4 text-ink/90"
+                  style={{ fontSize: 'calc(var(--intro-role) * var(--intro-scale) * var(--intro-fine))' }}
+                >
+                  <TypewriterText text="computer science student" />
+                </div>
+              </div>
+            </Card>
+          </Reveal>
+        
+        {/* Welcome + arrow */}
+        <div className="flex flex-col items-center">
+          <span 
+            className="text-ink/70"
+            style={{ fontSize: 'calc(var(--welcome) * var(--intro-scale) * var(--intro-fine))' }}
+          >
             welcome to my portfolio
-          </p>
-        </motion.div>
+          </span>
+          <button
+            aria-label="Scroll to about"
+            onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+            className="mt-2 opacity-80 hover:opacity-100 transition animate-nudge"
+          >
+            <svg width="32" height="16" viewBox="0 0 36 18">
+              <path d="M3 3l15 12L33 3" fill="none" stroke="currentColor" strokeWidth="2" />
+            </svg>
+          </button>
+        </div>
       </div>
-      
-      <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1, duration: 0.5 }}
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <ChevronDown className="w-6 h-6 text-gray-400" />
-        </motion.div>
-      </motion.div>
     </section>
   )
 }

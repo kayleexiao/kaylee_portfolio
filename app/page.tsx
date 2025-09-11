@@ -1,8 +1,13 @@
-import { Metadata } from 'next'
-import Hero from '@/components/sections/Hero'
-import About from '@/components/sections/About'
-import TechStack from '@/components/sections/TechStack'
+import Wide from '@/components/layout/Wide'
+import Navbar from '@/components/nav/Navbar'
+import AboutTech from '@/components/sections/AboutTech'
+import Contact from '@/components/sections/Contact'
+import Experience from '@/components/sections/Experience'
 import FeaturedProjects from '@/components/sections/FeaturedProjects'
+import Hero from '@/components/sections/Hero'
+import FancyDivider from '@/components/ui/FancyDivider'
+import Section from '@/components/ui/Section'
+import { Metadata } from 'next'
 
 export const dynamic = 'force-dynamic'
 
@@ -14,10 +19,17 @@ export const metadata: Metadata = {
 export default async function Home() {
   return (
     <>
+      <Navbar />
       <Hero />
-      <About />
-      <TechStack />
-      <FeaturedProjects />
+      <AboutTech />
+      <FancyDivider />
+      <Experience />
+      <Section id="projects" className="scroll-mt-28">
+        <Wide>
+          <FeaturedProjects />
+        </Wide>
+      </Section>
+      <Contact />
     </>
   )
 }

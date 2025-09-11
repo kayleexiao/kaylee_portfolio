@@ -1,13 +1,12 @@
-import { Metadata } from 'next'
-import { notFound } from 'next/navigation'
-import Image from 'next/image'
-import Link from 'next/link'
-import { Calendar, Clock, User, Github, ExternalLink, Figma } from 'lucide-react'
-import Card from '@/components/ui/Card'
+import ProjectNavigation from '@/components/ProjectNavigation'
 import Badge from '@/components/ui/Badge'
 import Button from '@/components/ui/Button'
+import Card from '@/components/ui/Card'
 import Carousel from '@/components/ui/Carousel'
-import ProjectNavigation from '@/components/ProjectNavigation'
+import { Calendar, Clock, ExternalLink, Figma, Github, User } from 'lucide-react'
+import { Metadata } from 'next'
+import Image from 'next/image'
+import { notFound } from 'next/navigation'
 
 export const dynamic = 'force-dynamic'
 
@@ -40,8 +39,9 @@ async function getAllProjects() {
   }
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const project = await getProject(params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const project = await getProject(slug)
 
   if (!project) {
     return {
@@ -60,9 +60,10 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default async function ProjectPage({ params }: { params: { slug: string } }) {
+export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
   const [project, allProjects] = await Promise.all([
-    getProject(params.slug),
+    getProject(slug),
     getAllProjects()
   ])
 
@@ -70,7 +71,7 @@ export default async function ProjectPage({ params }: { params: { slug: string }
     notFound()
   }
 
-  const currentIndex = allProjects.findIndex((p: any) => p.slug === params.slug)
+  const currentIndex = allProjects.findIndex((p: any) => p.slug === slug)
   const prevProject = currentIndex > 0 ? allProjects[currentIndex - 1] : null
   const nextProject = currentIndex < allProjects.length - 1 ? allProjects[currentIndex + 1] : null
 
