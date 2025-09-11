@@ -18,6 +18,20 @@
   --brand-pink: #F56B80;
   --brand-pink-light: #FAB6C0;
   --brand-pink-dark: #F56B80;
+  
+  /* Hero typography scale (Figma ratios 45:65:30 + 30% = 59:85:39) */
+  --intro-small: clamp(36px, 4.0vw, 59px); /* "hi, i'm" */
+  --intro-big: clamp(52px, 5.9vw, 85px); /* "kaylee xiao" */
+  --intro-role: clamp(26px, 2.9vw, 39px); /* "computer science student" */
+  --welcome: calc(var(--intro-role) * .66); /* 2/3 of role size */
+  --hero-gap: clamp(24px, 6vh, 80px);
+  --intro-scale: 1.7; /* requested scale */
+  --intro-fine: .65; /* 0.35x smaller */
+  
+  /* Navbar scaling */
+  --nav-scale: 1.15;          /* 15% bigger */
+  --nav-brand-base: 1.25rem;  /* 20px baseline */
+  --nav-link-base: 1.125rem;  /* 18px baseline */
 }
 
 body {
@@ -83,6 +97,40 @@ html {
     transition-duration: .9s; 
   }
 }
+
+/* prevent caret blinking on non-editables in the hero area */
+.hero *:not(input):not(textarea):not([contenteditable="true"]) {
+  caret-color: transparent;
+}
+
+/* Typewriter pseudo-caret (not a real input caret) */
+.typewriter {
+  position: relative;
+  white-space: pre;
+}
+.typewriter__caret {
+  display: inline-block;
+  width: 0.08em;
+  height: 0.9em;
+  margin-left: 0.08em;
+  background: currentColor;
+  opacity: .8;
+  vertical-align: -0.05em;
+  animation: tw-blink 1.05s steps(1, end) infinite;
+}
+@keyframes tw-blink { 0%, 49% { opacity: .8 } 50%, 100% { opacity: 0 } }
+
+/* Respect reduced motion: show solid caret, no blink */
+@media (prefers-reduced-motion: reduce) {
+  .typewriter__caret { animation: none; opacity: .8; }
+}
+
+/* Subtle bouncing down arrow animation */
+@keyframes nudge-y {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(6px); }
+}
+.animate-nudge { animation: nudge-y 1.8s ease-in-out infinite; }
 
 @media (prefers-reduced-motion: reduce) {
   * {
