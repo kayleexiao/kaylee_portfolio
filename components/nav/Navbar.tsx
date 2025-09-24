@@ -13,8 +13,9 @@ const navItems = [
 
 export default function Navbar() {
   const activeId = useScrollSpy({ 
-    ids: ['about', 'experience', 'projects', 'contact'],
-    threshold: 0.55 
+    ids: ['intro', 'about', 'experience', 'projects', 'contact'],
+    rootMargin: '-35% 0px -55% 0px',
+    threshold: [0, 0.1]
   })
 
   return (

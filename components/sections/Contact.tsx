@@ -4,7 +4,7 @@ import Section from '@/components/ui/Section'
 
 export default function Contact() {
   return (
-    <Section id="contact" className="scroll-mt-28">
+    <Section id="contact" className="scroll-mt-24">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-2 mb-4">

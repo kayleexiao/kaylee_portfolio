@@ -24,7 +24,7 @@ export default async function Home() {
       <AboutTech />
       <FancyDivider />
       <Experience />
-      <Section id="projects" className="scroll-mt-28">
+      <Section id="projects" className="scroll-mt-24">
         <Wide>
           <FeaturedProjects />
         </Wide>

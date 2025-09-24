@@ -28,7 +28,7 @@ export default function Experience() {
   }
 
   return (
-    <Wide id="experience" className="scroll-mt-36 py-16">
+    <Wide id="experience" className="scroll-mt-24 py-16">
       <div className="text-center mb-12">
         <div className="flex items-center justify-center gap-2 mb-4">
           <Icon name="projects-star" className="w-6 h-6 text-rose-500" alt="" />
