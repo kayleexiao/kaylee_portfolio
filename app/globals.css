@@ -98,8 +98,8 @@ html {
   }
 }
 
-/* prevent caret blinking on non-editables in the hero area */
-.hero *:not(input):not(textarea):not([contenteditable="true"]) {
+/* Hide insertion caret on non-editable elements site-wide */
+:where(*):not(input):not(textarea):not([contenteditable="true"]) {
   caret-color: transparent;
 }
 

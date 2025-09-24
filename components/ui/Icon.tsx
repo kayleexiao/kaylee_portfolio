@@ -4,6 +4,7 @@ import { cn } from '@/lib/cn'
 const iconMap = {
   'about-star': '/assets/icons/about-star.svg',
   'contact-star': '/assets/icons/contact-star.svg',
+  'divider-star': '/assets/icons/divider-star.svg',
   'intro-star': '/assets/icons/intro-star.svg',
   'nav-arrow': '/assets/icons/nav-arrow.svg',
   'nav-star': '/assets/icons/nav-star.svg',
@@ -16,6 +17,9 @@ const iconMap = {
   'project-person': '/assets/icons/project-person.svg',
   'projects-star': '/assets/icons/projects-star.svg',
   'tech-css': '/assets/icons/tech-css.svg',
+  'tech-dart': '/assets/icons/tech-dart.svg',
+  'tech-django': '/assets/icons/tech-django.svg',
+  'tech-flutter': '/assets/icons/tech-flutter.svg',
   'tech-git': '/assets/icons/tech-git.svg',
   'tech-github': '/assets/icons/tech-github.svg',
   'tech-html': '/assets/icons/tech-html.svg',
@@ -24,6 +28,7 @@ const iconMap = {
   'tech-mysql': '/assets/icons/tech-mysql.svg',
   'tech-node': '/assets/icons/tech-node.svg',
   'tech-python': '/assets/icons/tech-python.svg',
+  'tech-pytorch': '/assets/icons/tech-pytorch.svg',
   'tech-react': '/assets/icons/tech-react.svg',
   'tech-stack-star': '/assets/icons/tech-stack-star.svg',
 } as const
