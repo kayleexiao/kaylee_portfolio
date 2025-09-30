@@ -32,9 +32,11 @@ export default function AboutTech() {
               {/* Paragraph centered in the remaining space */}
               <div className="flex-1 flex items-center">
                 <p className="mx-auto text-center leading-relaxed max-w-[42ch] mt-0 mb-0 text-lg md:text-xl text-white/90">
-                  I'm a passionate computer science student who loves turning ideas into reality through code. 
-                  With experience in full-stack development, machine learning, and database design, 
-                  I'm always excited to take on new challenges and learn cutting-edge technologies.
+                  Hi! My name is Kaylee, I'm a computer science student at the University of Calgary.
+                  I enjoy bringing ideas to life through coding, design, and projects that challenge me to think in new ways. 
+                  I've worked on everything from apps to websites, and I like finding that balance between creativity and problem solving. 
+                  Outside of school, I'm always looking for new ways to learn, grow, and try something different. 
+                  The rest of the site has a few more pieces of my story, so take a look!
                 </p>
               </div>
             </Card>
