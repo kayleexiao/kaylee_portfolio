@@ -3,8 +3,7 @@
 import Wide from '@/components/layout/Wide'
 import Reveal from '@/components/motion/Reveal'
 import Icon from '@/components/ui/Icon'
-import { AnimatePresence, motion } from 'framer-motion'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const experienceData = [
   {
@@ -22,20 +21,92 @@ const experienceData = [
 
 export default function Experience() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
+  const contentRefs = useRef<(HTMLDivElement | null)[]>([])
 
   const toggleExpanded = (index: number) => {
     setExpandedIndex(expandedIndex === index ? null : index)
   }
 
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    
+    contentRefs.current.forEach((ref, index) => {
+      if (!ref) return
+      
+      const isExpanded = expandedIndex === index
+      
+      if (prefersReducedMotion) {
+        // Snap open/closed with no animation
+        ref.style.height = isExpanded ? 'auto' : '0'
+        ref.style.opacity = isExpanded ? '1' : '0'
+        ref.style.overflow = isExpanded ? 'visible' : 'hidden'
+        return
+      }
+      
+      if (isExpanded) {
+        // Opening animation
+        ref.style.height = '0'
+        ref.style.opacity = '0'
+        ref.style.overflow = 'hidden'
+        ref.style.willChange = 'height, opacity'
+        ref.style.transition = 'height 300ms cubic-bezier(0.22, 1, 0.36, 1), opacity 300ms cubic-bezier(0.22, 1, 0.36, 1)'
+        
+        // Measure target height
+        const targetHeight = ref.scrollHeight
+        
+        // Use requestAnimationFrame to ensure smooth start
+        requestAnimationFrame(() => {
+          ref.style.height = `${targetHeight}px`
+          ref.style.opacity = '1'
+        })
+        
+        // Set to auto after animation completes
+        const handleTransitionEnd = () => {
+          ref.style.height = 'auto'
+          ref.style.overflow = 'visible'
+          ref.style.willChange = 'auto'
+          ref.removeEventListener('transitionend', handleTransitionEnd)
+        }
+        ref.addEventListener('transitionend', handleTransitionEnd)
+      } else {
+        // Closing animation
+        const currentHeight = ref.offsetHeight
+        ref.style.height = `${currentHeight}px`
+        ref.style.overflow = 'hidden'
+        ref.style.willChange = 'height, opacity'
+        ref.style.transition = 'height 300ms cubic-bezier(0.22, 1, 0.36, 1), opacity 300ms cubic-bezier(0.22, 1, 0.36, 1)'
+        
+        // Force reflow
+        ref.getBoundingClientRect()
+        
+        // Use requestAnimationFrame to ensure smooth start
+        requestAnimationFrame(() => {
+          ref.style.height = '0'
+          ref.style.opacity = '0'
+        })
+        
+        // Clean up after animation - DO NOT set height to auto
+        const handleTransitionEnd = () => {
+          ref.style.willChange = 'auto'
+          // Keep height at 0 to prevent jump
+          ref.removeEventListener('transitionend', handleTransitionEnd)
+        }
+        ref.addEventListener('transitionend', handleTransitionEnd)
+      }
+    })
+  }, [expandedIndex])
+
   return (
     <Wide id="experience" className="scroll-mt-24 py-16">
       <div className="text-center mb-12">
         <div className="flex items-center justify-center gap-2 mb-4">
-          <Icon name="projects-star" className="w-6 h-6 text-rose-500" alt="" />
-          <h2 className="text-3xl md:text-4xl font-bold text-ink">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#F56B80]">
             EXPERIENCE
           </h2>
         </div>
+        <p className="text-ink/60 text-sm md:text-base mt-2">
+          Click a card to read more.
+        </p>
       </div>
       
       <div className="space-y-4">
@@ -73,31 +144,27 @@ export default function Experience() {
               </button>
             </Reveal>
             
-            <AnimatePresence>
-              {expandedIndex === index && (
-                <Reveal>
-                  <motion.div
-                    id={`experience-content-${index}`}
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="mt-4 rounded-xl border border-white/60 bg-white/90 p-5"
-                  >
-                    <ul className="space-y-3">
-                      {exp.responsibilities.map((responsibility, respIndex) => (
-                        <li key={respIndex} className="flex items-start">
-                          <div className="w-2 h-2 bg-rose-500 rounded-full mt-2 mr-3 flex-shrink-0" />
-                          <span className="text-ink/80 leading-relaxed">
-                            {responsibility}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </motion.div>
-                </Reveal>
-              )}
-            </AnimatePresence>
+            <div
+              ref={(el) => { contentRefs.current[index] = el }}
+              id={`experience-content-${index}`}
+              className="mt-4 rounded-3xl border-2 border-[#F56B80] bg-white p-6 sm:p-8"
+              style={{ 
+                height: expandedIndex === index ? 'auto' : '0',
+                opacity: expandedIndex === index ? '1' : '0',
+                overflow: expandedIndex === index ? 'visible' : 'hidden'
+              }}
+            >
+              <ul className="space-y-3">
+                {exp.responsibilities.map((responsibility, respIndex) => (
+                  <li key={respIndex} className="flex items-start">
+                    <div className="w-2 h-2 bg-rose-500 rounded-full mt-2 mr-3 flex-shrink-0" />
+                    <span className="text-ink/80 leading-relaxed">
+                      {responsibility}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         ))}
       </div>
