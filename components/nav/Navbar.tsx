@@ -53,7 +53,7 @@ export default function Navbar() {
           className="flex items-center gap-2 font-semibold tracking-[0.3em] text-xl md:text-2xl text-ink no-underline transition-opacity hover:opacity-80 leading-none"
           style={{ fontSize: 'calc(var(--nav-brand-base) * var(--nav-scale))' }}
         >
-          <Icon name="nav-star" className="h-10 w-10 md:h-11 md:w-11 text-rose-500 relative top-[0.5px]" alt="" />
+          <Icon name="nav-star" className="md:h-8 md:w-8 text-rose-500 relative top-[0.5px]" alt="" />
           kaylee
         </a>
 

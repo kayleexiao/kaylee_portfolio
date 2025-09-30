@@ -43,7 +43,7 @@ export default function TechCarousel({ className }: TechCarouselProps) {
     : "transition-transform duration-500 ease-[cubic-bezier(.22,.61,.36,1)] will-change-transform"
 
   return (
-    <div className={className}>
+    <div className={`w-full ${className || ''}`}>
       <div className="relative">
         <div className="overflow-hidden" aria-live="polite">
           <div
@@ -53,7 +53,7 @@ export default function TechCarousel({ className }: TechCarouselProps) {
             {pages.map((group, i) => (
               <ul
                 key={i}
-                className="shrink-0 w-full grid grid-cols-5 grid-rows-2 gap-6 justify-items-center py-4"
+                className="shrink-0 w-full grid grid-cols-5 grid-rows-2 gap-6 justify-items-center place-items-center"
               >
                 {group.map((tech) => (
                   <li key={tech.name}>
@@ -71,7 +71,7 @@ export default function TechCarousel({ className }: TechCarouselProps) {
 
         {/* Navigation */}
         {total > 1 && (
-          <div className="mt-4 flex items-center justify-center gap-6 pb-2">
+          <div className="mt-6 md:mt-8 flex items-center justify-center gap-6">
             <span className="text-sm text-ink/60 tabular-nums min-w-[60px] text-center">
               {page + 1} / {total}
             </span>
