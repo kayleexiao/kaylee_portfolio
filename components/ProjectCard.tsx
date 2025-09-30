@@ -27,7 +27,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
     >
-      <Link href={`/projects/${project.slug}`}>
+      <Link href={`/projects/${project.slug}`} prefetch={false}>
         <Card hover className="p-6 h-full flex flex-col group">
           <div className="h-64 w-64 rounded-xl overflow-hidden bg-white/80 mx-auto mb-4 flex items-center justify-center">
             <Image

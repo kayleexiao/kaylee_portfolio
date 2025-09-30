@@ -37,6 +37,9 @@ export default function FeaturedProjects() {
               <Icon name="projects-star" className="w-10 h-10 text-[#F56B80]" alt="" />
             </div>
           </div>
+          <p className="mt-3 text-ink/70 text-base md:text-lg text-center">
+            A collection of my projects.
+          </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[...Array(3)].map((_, i) => (
@@ -58,8 +61,11 @@ export default function FeaturedProjects() {
             </h2>
             <Icon name="projects-star" className="w-10 h-10 text-[#F56B80]" alt="" />
           </div>
+          </div>
+          <p className="mt-3 text-ink/70 text-base md:text-lg text-center">
+            A collection of my projects.
+          </p>
         </div>
-      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project: any, index: number) => (
