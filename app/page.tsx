@@ -5,7 +5,7 @@ import Contact from '@/components/sections/Contact'
 import Experience from '@/components/sections/Experience'
 import FeaturedProjects from '@/components/sections/FeaturedProjects'
 import Hero from '@/components/sections/Hero'
-import FancyDivider from '@/components/ui/FancyDivider'
+import ExperienceDivider from '@/components/ui/ExperienceDivider'
 import Section from '@/components/ui/Section'
 import { Metadata } from 'next'
 
@@ -22,9 +22,9 @@ export default async function Home() {
       <Navbar />
       <Hero />
       <AboutTech />
-      <FancyDivider />
+      <ExperienceDivider size="lg" />
       <Experience />
-      <Section id="projects" className="scroll-mt-28">
+      <Section id="projects" className="scroll-mt-24">
         <Wide>
           <FeaturedProjects />
         </Wide>

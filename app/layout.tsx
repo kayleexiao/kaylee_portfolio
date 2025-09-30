@@ -1,4 +1,5 @@
 import Footer from '@/components/Footer'
+import ScrollToTop from '@/components/util/ScrollToTop'
 import { Metadata } from 'next'
 import { Cuprum } from 'next/font/google'
 import './globals.css'
@@ -48,6 +49,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={cuprum.variable}>
       <body className={`${cuprum.className} antialiased min-h-screen flex flex-col`}>
+        <ScrollToTop />
         <main className="flex-1">
           {children}
         </main>

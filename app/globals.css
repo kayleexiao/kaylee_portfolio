@@ -96,10 +96,21 @@ html {
   .reveal-slow { 
     transition-duration: .9s; 
   }
+
+  /* Hero name slow fade-in */
+  .hero-name-fade-slow {
+    animation: heroFadeInUp 1.9s cubic-bezier(.22,.61,.36,1) both;
+    animation-delay: .25s; /* keep a slight delay so it feels smooth */
+  }
+
+  @keyframes heroFadeInUp {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 }
 
-/* prevent caret blinking on non-editables in the hero area */
-.hero *:not(input):not(textarea):not([contenteditable="true"]) {
+/* Hide insertion caret on non-editable elements site-wide */
+:where(*):not(input):not(textarea):not([contenteditable="true"]) {
   caret-color: transparent;
 }
 

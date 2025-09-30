@@ -1,10 +1,7 @@
 'use client'
 
 import ProjectCard from '@/components/ProjectCard'
-import Button from '@/components/ui/Button'
 import Icon from '@/components/ui/Icon'
-import { motion } from 'framer-motion'
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 export default function FeaturedProjects() {
@@ -31,12 +28,18 @@ export default function FeaturedProjects() {
     return (
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <Icon name="projects-star" className="w-6 h-6 text-rose-500" alt="" />
-            <h2 className="text-3xl md:text-4xl font-bold text-ink">
-              PROJECTS
-            </h2>
+          <div className="flex justify-center mb-4">
+            <div className="rounded-full border-2 border-[#F56B80] bg-white/0 px-12 sm:px-16 md:px-20 py-3 sm:py-4 flex items-center justify-center gap-6 sm:gap-8 w-full mx-auto" style={{ maxWidth: 'min(92vw, 600px)' }}>
+              <Icon name="projects-star" className="w-10 h-10 text-[#F56B80]" alt="" />
+              <h2 className="text-3xl md:text-4xl font-bold text-[#F56B80]">
+                PROJECTS
+              </h2>
+              <Icon name="projects-star" className="w-10 h-10 text-[#F56B80]" alt="" />
+            </div>
           </div>
+          <p className="mt-3 text-ink/70 text-base md:text-lg text-center">
+            A collection of my projects.
+          </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[...Array(3)].map((_, i) => (
@@ -50,33 +53,25 @@ export default function FeaturedProjects() {
   return (
     <div className="max-w-6xl mx-auto">
       <div className="text-center mb-12">
-        <div className="flex items-center justify-center gap-2 mb-4">
-          <Icon name="projects-star" className="w-6 h-6 text-rose-500" alt="" />
-          <h2 className="text-3xl md:text-4xl font-bold text-ink">
-            PROJECTS
-          </h2>
+        <div className="flex justify-center mb-4">
+          <div className="rounded-full border-2 border-[#F56B80] bg-white/0 px-12 sm:px-16 md:px-20 py-3 sm:py-4 flex items-center justify-center gap-6 sm:gap-8 w-full mx-auto" style={{ maxWidth: 'min(92vw, 600px)' }}>
+            <Icon name="projects-star" className="w-10 h-10 text-[#F56B80]" alt="" />
+            <h2 className="text-3xl md:text-4xl font-bold text-[#F56B80]">
+              PROJECTS
+            </h2>
+            <Icon name="projects-star" className="w-10 h-10 text-[#F56B80]" alt="" />
+          </div>
+          </div>
+          <p className="mt-3 text-ink/70 text-base md:text-lg text-center">
+            A collection of my projects.
+          </p>
         </div>
-      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project: any, index: number) => (
           <ProjectCard key={project.slug} project={project} index={index} />
         ))}
       </div>
-
-      <motion.div
-        className="text-center"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-      >
-        <Link href="/projects">
-          <Button size="lg" variant="solid">
-            View All Projects
-          </Button>
-        </Link>
-      </motion.div>
     </div>
   )
 }
