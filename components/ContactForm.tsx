@@ -4,61 +4,41 @@ import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { AnimatePresence, motion } from 'framer-motion'
-import { AlertCircle, Check, Github, Linkedin, Send } from 'lucide-react'
+import { AlertCircle, Github, Linkedin, Send } from 'lucide-react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
 const contactSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
-  message: z.string().min(10, 'Message must be at least 10 characters long'),
+  message: z.string().min(5, 'Message must be at least 5 characters long'),
 })
 
 type ContactForm = z.infer<typeof contactSchema>
 
 export default function ContactForm() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'opening'>('idle')
   
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors }
   } = useForm<ContactForm>({
     resolver: zodResolver(contactSchema)
   })
 
-  const onSubmit = async (data: ContactForm) => {
-    setIsSubmitting(true)
-    setSubmitStatus('idle')
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      })
-
-      const result = await response.json()
-
-      if (response.ok && result.success) {
-        setSubmitStatus('success')
-        reset()
-        setTimeout(() => setSubmitStatus('idle'), 5000)
-      } else {
-        setSubmitStatus('error')
-        setTimeout(() => setSubmitStatus('idle'), 5000)
-      }
-    } catch (error) {
-      console.error('Form submission error:', error)
-      setSubmitStatus('error')
-      setTimeout(() => setSubmitStatus('idle'), 5000)
-    } finally {
-      setIsSubmitting(false)
-    }
+  const onSubmit = (data: ContactForm) => {
+    // Build mailto link
+    const subject = encodeURIComponent('Portfolio contact')
+    const body = encodeURIComponent(data.message)
+    const mailtoLink = `mailto:kayleexiao4@gmail.com?subject=${subject}&body=${body}`
+    
+    // Open email client
+    window.location.href = mailtoLink
+    
+    // Show helper message
+    setSubmitStatus('opening')
+    setTimeout(() => setSubmitStatus('idle'), 3000)
   }
 
   return (
@@ -66,15 +46,14 @@ export default function ContactForm() {
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div>
               <label htmlFor="email" className="sr-only">
-                Email
+                Your Email
               </label>
               <input
                 {...register('email')}
                 type="email"
                 id="email"
-                placeholder="Email"
+                placeholder="Your Email"
                 className="w-full px-4 py-3 bg-white/80 border border-rose-200/60 rounded-2xl focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all duration-200 placeholder-ink/50"
-                disabled={isSubmitting}
               />
               <AnimatePresence>
                 {errors.email && (
@@ -93,15 +72,14 @@ export default function ContactForm() {
 
             <div>
               <label htmlFor="message" className="sr-only">
-                Message
+                Your Message
               </label>
               <textarea
                 {...register('message')}
                 id="message"
                 rows={6}
-                placeholder="Message"
+                placeholder="Your Message"
                 className="w-full px-4 py-3 bg-white/80 border border-rose-200/60 rounded-2xl focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all duration-200 placeholder-ink/50 resize-none"
-                disabled={isSubmitting}
               />
               <AnimatePresence>
                 {errors.message && (
@@ -121,65 +99,31 @@ export default function ContactForm() {
             <div className="flex flex-col items-center space-y-4">
               <Button
                 type="submit"
-                disabled={isSubmitting}
                 size="lg"
                 className="min-w-[140px] relative"
               >
-                <AnimatePresence mode="wait">
-                  {isSubmitting ? (
-                    <motion.div
-                      key="loading"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      className="flex items-center"
-                    >
-                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
-                      Sending...
-                    </motion.div>
-                  ) : submitStatus === 'success' ? (
-                    <motion.div
-                      key="success"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.8 }}
-                      className="flex items-center"
-                    >
-                      <Check className="w-4 h-4 mr-2" />
-                      Message Sent!
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="default"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      className="flex items-center"
-                    >
-                      <Send className="w-4 h-4 mr-2" />
-                      Send Message
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                <div className="flex items-center">
+                  <Send className="w-4 h-4 mr-2" />
+                  Send Message
+                </div>
               </Button>
 
               <AnimatePresence>
-                {submitStatus === 'error' && (
+                {submitStatus === 'opening' && (
                   <motion.p
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
-                    className="text-red-600 text-sm flex items-center"
+                    className="text-ink/70 text-sm"
                   >
-                    <AlertCircle className="w-4 h-4 mr-1" />
-                    Failed to send message. Please try again.
+                    Opening your email app…
                   </motion.p>
                 )}
               </AnimatePresence>
 
               <div className="flex items-center space-x-4 pt-4">
                 <a
-                  href="https://github.com/kaylee"
+                  href="https://github.com/kayleexiao"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 bg-brand-pink-light text-brand-pink rounded-full hover:bg-brand-pink hover:text-white transition-all duration-200 hover:-translate-y-1"
@@ -188,7 +132,7 @@ export default function ContactForm() {
                   <Github className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://linkedin.com/in/kaylee-xiao"
+                  href="https://www.linkedin.com/in/kayleexiao/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 bg-brand-pink-light text-brand-pink rounded-full hover:bg-brand-pink hover:text-white transition-all duration-200 hover:-translate-y-1"
