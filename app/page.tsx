@@ -12,7 +12,6 @@ import { Metadata } from 'next'
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title: 'Home',
   description: 'Welcome to Kaylee Xiao\'s portfolio - Computer science student passionate about building innovative solutions.',
 }
 

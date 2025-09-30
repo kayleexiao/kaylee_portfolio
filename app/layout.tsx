@@ -16,31 +16,39 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     metadataBase: new URL(await getBaseUrl()),
     title: {
-    default: 'Kaylee Xiao - Computer Science Student & Developer',
-    template: '%s | Kaylee Xiao'
-  },
-  description: 'Computer science student passionate about building innovative solutions. Explore my projects, experience, and get in touch.',
-  keywords: ['Kaylee Xiao', 'Computer Science', 'Developer', 'Portfolio', 'React', 'Next.js', 'TypeScript'],
-  authors: [{ name: 'Kaylee Xiao' }],
-  creator: 'Kaylee Xiao',
-  openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: '/',
-    title: 'Kaylee Xiao - Computer Science Student & Developer',
-    description: 'Computer science student passionate about building innovative solutions.',
-    siteName: 'Kaylee Xiao Portfolio',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Kaylee Xiao - Computer Science Student & Developer',
-    description: 'Computer science student passionate about building innovative solutions.',
-    creator: '@kaylee_xiao',
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+      default: 'Kaylee Xiao ₊˚⊹ᰔ',
+      template: '%s • Kaylee Xiao ₊˚⊹ᰔ',
+    },
+    description: 'Portfolio of Kaylee Xiao',
+    icons: {
+      icon: [
+        { url: '/assets/logo.png', type: 'image/png', sizes: '32x32' },
+        { url: '/assets/logo.png', type: 'image/png', sizes: '192x192' }
+      ],
+      apple: [{ url: '/assets/logo.png', type: 'image/png' }],
+      shortcut: ['/assets/logo.png'],
+    },
+    keywords: ['Kaylee Xiao', 'Computer Science', 'Developer', 'Portfolio', 'React', 'Next.js', 'TypeScript'],
+    authors: [{ name: 'Kaylee Xiao' }],
+    creator: 'Kaylee Xiao',
+    openGraph: {
+      type: 'website',
+      locale: 'en_US',
+      url: '/',
+      title: 'Kaylee Xiao ₊˚⊹ᰔ',
+      description: 'Portfolio of Kaylee Xiao',
+      siteName: 'Kaylee Xiao Portfolio',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Kaylee Xiao ₊˚⊹ᰔ',
+      description: 'Portfolio of Kaylee Xiao',
+      creator: '@kaylee_xiao',
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
   }
 }
 
