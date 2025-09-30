@@ -1,5 +1,6 @@
 import Footer from '@/components/Footer'
 import ScrollToTop from '@/components/util/ScrollToTop'
+import { getBaseUrl } from '@/lib/baseUrl'
 import { Metadata } from 'next'
 import { Cuprum } from 'next/font/google'
 import './globals.css'
@@ -11,9 +12,10 @@ const cuprum = Cuprum({
   display: 'swap',
 })
 
-export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
-  title: {
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    metadataBase: new URL(await getBaseUrl()),
+    title: {
     default: 'Kaylee Xiao - Computer Science Student & Developer',
     template: '%s | Kaylee Xiao'
   },
@@ -39,6 +41,7 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  }
 }
 
 export default function RootLayout({

@@ -1,8 +1,9 @@
-import { MetadataRoute } from 'next'
 import projectsData from '@/data/projects.json'
+import { getBaseUrl } from '@/lib/baseUrl'
+import { MetadataRoute } from 'next'
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const baseUrl = await getBaseUrl()
 
   // Static pages
   const staticPages = [
