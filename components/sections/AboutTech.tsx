@@ -46,8 +46,8 @@ export default function AboutTech() {
         {/* TECH STACK Card */}
         <div className="lg:col-span-7">
           <Reveal>
-            <Card ref={techRef} className="h-full flex flex-col rounded-3xl px-8 md:px-10 py-8 md:py-10 bg-[rgba(255,255,255,0.9)] shadow-pink">
-              <div className="mb-6 md:mb-8 flex items-center gap-3 shrink-0">
+            <Card ref={techRef} className="h-full flex flex-col rounded-3xl px-6 md:px-8 py-6 md:py-8 bg-[rgba(255,255,255,0.9)] shadow-pink">
+              <div className="mb-4 md:mb-5 flex items-center gap-3 shrink-0">
                 <img 
                   src="/assets/icons/tech-stack-star.svg" 
                   alt="" 

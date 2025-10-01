@@ -20,12 +20,31 @@ function chunk<T>(array: readonly T[], size: number): T[][] {
 export default function TechCarousel({ className }: TechCarouselProps) {
   const [page, setPage] = useState(0)
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+  const [pageSize, setPageSize] = useState(8)
   
-  const pageSize = 10
+  // Display all tech icons
   const pages = chunk(techIcons, pageSize)
   const total = pages.length
   const canPrev = page > 0
   const canNext = page < total - 1
+
+  // Update page size based on screen width
+  useEffect(() => {
+    const updatePageSize = () => {
+      if (window.innerWidth < 768) {
+        setPageSize(4) // Mobile: 4 icons
+      } else if (window.innerWidth < 1280) {
+        setPageSize(6) // Tablet/Small Desktop: 6 icons
+      } else {
+        setPageSize(8) // Large Desktop: 8 icons
+      }
+      setPage(0) // Reset to first page when size changes
+    }
+
+    updatePageSize()
+    window.addEventListener('resize', updatePageSize)
+    return () => window.removeEventListener('resize', updatePageSize)
+  }, [])
 
   // Check for reduced motion preference
   useEffect(() => {
@@ -41,6 +60,13 @@ export default function TechCarousel({ className }: TechCarouselProps) {
   const transitionClass = prefersReducedMotion 
     ? "" 
     : "transition-transform duration-500 ease-[cubic-bezier(.22,.61,.36,1)] will-change-transform"
+  
+  // Determine grid layout based on page size
+  const getGridClass = () => {
+    if (pageSize === 4) return 'grid-cols-2 grid-rows-2' // 2x2 grid for 4 icons
+    if (pageSize === 6) return 'grid-cols-3 grid-rows-2' // 3x2 grid for 6 icons
+    return 'grid-cols-4 grid-rows-2' // 4x2 grid for 8 icons
+  }
 
   return (
     <div className={`w-full ${className || ''}`}>
@@ -53,13 +79,13 @@ export default function TechCarousel({ className }: TechCarouselProps) {
             {pages.map((group, i) => (
               <ul
                 key={i}
-                className="shrink-0 w-full grid grid-cols-5 grid-rows-2 gap-6 justify-items-center place-items-center"
+                className={`shrink-0 w-full grid ${getGridClass()} gap-3 md:gap-4 justify-items-center place-items-center`}
               >
                 {group.map((tech) => (
                   <li key={tech.name}>
                     <Icon 
                       name={tech.icon} 
-                      className="h-14 w-14 md:h-16 md:w-16 text-rose-500" 
+                      className="h-20 w-20 md:h-24 md:w-24 text-rose-500" 
                       alt={tech.name} 
                     />
                   </li>
@@ -71,7 +97,7 @@ export default function TechCarousel({ className }: TechCarouselProps) {
 
         {/* Navigation */}
         {total > 1 && (
-          <div className="mt-6 md:mt-8 flex items-center justify-center gap-6">
+          <div className="mt-4 md:mt-6 flex items-center justify-center gap-6">
             <span className="text-sm text-ink/60 tabular-nums min-w-[60px] text-center">
               {page + 1} / {total}
             </span>
