@@ -44,7 +44,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             {project.title}
           </h3>
           
-          <p className="text-ink/70 text-base leading-relaxed mb-4 flex-1">
+          <p className="text-ink/70 text-base leading-relaxed mb-4 flex-1 whitespace-pre-line">
             {project.description}
           </p>
           

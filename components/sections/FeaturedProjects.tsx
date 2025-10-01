@@ -13,7 +13,7 @@ export default function FeaturedProjects() {
       try {
         const response = await fetch('/api/projects')
         const data = await response.json()
-        setProjects(data.slice(0, 3)) // Show first 3 projects
+        setProjects(data) // Show all projects
       } catch (error) {
         console.error('Failed to fetch projects:', error)
       } finally {
