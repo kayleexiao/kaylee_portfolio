@@ -26,10 +26,11 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="h-full"
     >
-      <Link href={`/projects/${project.slug}`} prefetch={false}>
+      <Link href={`/projects/${project.slug}`} prefetch={false} className="h-full block">
         <Card hover className="p-6 h-full flex flex-col group">
-          <div className="h-64 w-64 rounded-xl overflow-hidden bg-white/80 mx-auto mb-4 flex items-center justify-center">
+          <div className="h-40 w-40 2xl:h-64 2xl:w-64 rounded-xl overflow-hidden bg-white/80 mx-auto mb-4 flex items-center justify-center">
             <Image
               src={project.image}
               alt={`${project.title} logo`}
@@ -40,11 +41,11 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             />
           </div>
           
-          <h3 className="text-2xl font-bold text-ink mb-2 group-hover:text-rose-500 transition-colors">
+          <h3 className="text-4xl 2xl:text-2xl font-bold text-ink mb-2 group-hover:text-rose-500 transition-colors">
             {project.title}
           </h3>
           
-          <p className="text-ink/70 text-base leading-relaxed mb-4 flex-1 whitespace-pre-line">
+          <p className="text-ink/70 text-xl 2xl:text-base leading-relaxed mb-4 flex-1 whitespace-pre-line">
             {project.description}
           </p>
           
@@ -52,7 +53,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             {project.technologies.map((tech) => (
               <span
                 key={tech}
-                className="bg-transparent border border-[#F56B80] text-[#F56B80] rounded-full px-3 py-1 text-base leading-none"
+                className="bg-transparent border border-[#F56B80] text-[#F56B80] rounded-full px-3 py-1 text-xl 2xl:text-base leading-none"
               >
                 {tech}
               </span>
@@ -60,9 +61,9 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           </div>
           
           <div className="flex justify-end">
-            <div className="flex items-center text-brand-pink font-medium text-base group-hover:text-brand-pink-dark transition-colors">
+            <div className="flex items-center text-brand-pink font-medium text-xl 2xl:text-base group-hover:text-brand-pink-dark transition-colors">
               <span>VIEW</span>
-              <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-6 h-6 2xl:w-4 2xl:h-4 ml-1 group-hover:translate-x-1 transition-transform" />
             </div>
           </div>
         </Card>
