@@ -7,6 +7,7 @@ interface ProjectPageProps {
 
 function getProjectTitle(slug: string): string {
   const titleMap: Record<string, string> = {
+    portfolio: 'Portfolio Website',
     petpals: 'PetPals',
     fitquest: 'FitQuest',
     revrentals: 'RevRentals',
@@ -16,6 +17,7 @@ function getProjectTitle(slug: string): string {
 
 function getRepoUrl(slug: string): string | null {
   const repoMap: Record<string, string> = {
+    portfolio: 'https://github.com/kayleexiao/kaylee_portfolio',
     petpals: 'https://github.com/ryanwoong/PetPals',
     fitquest: 'https://github.com/kayleexiao/FitQuest',
     revrentals: 'https://github.com/aeMyst/RevRentals',
@@ -47,6 +49,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </p>
 
         <div className="flex items-center gap-4 mb-10">
+          <Link
+            href="/#projects"
+            className="inline-flex items-center rounded-full border border-ink/10 text-ink hover:bg-ink/[0.03] px-4 py-2 transition-colors"
+          >
+            ← Back to Projects
+          </Link>
+
           {repoUrl && (
             <a
               href={repoUrl}
@@ -57,13 +66,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               View on GitHub →
             </a>
           )}
-
-          <Link
-            href="/#projects"
-            className="inline-flex items-center rounded-full border border-ink/10 text-ink hover:bg-ink/[0.03] px-4 py-2 transition-colors"
-          >
-            ← Back to Projects
-          </Link>
         </div>
       </div>
     </div>
