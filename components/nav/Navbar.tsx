@@ -17,8 +17,8 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const activeId = useScrollSpy({ 
     ids: ['intro', 'about', 'experience', 'projects', 'contact'],
-    rootMargin: '-35% 0px -55% 0px',
-    threshold: [0, 0.1]
+    rootMargin: '-20% 0px -60% 0px',
+    threshold: [0, 0.1, 0.25, 0.5, 0.75, 1.0]
   })
 
   // Close mobile menu on navigation
@@ -65,12 +65,7 @@ export default function Navbar() {
               href={`#${item.id}`}
               className={`
                 relative text-[19px] md:text-[20px] text-ink transition-opacity hover:opacity-80 no-underline
-                after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:rounded-full 
-                after:bg-[var(--rose-500)] after:transition-transform after:origin-left
-                ${activeId === item.id 
-                  ? 'after:w-full after:scale-x-100' 
-                  : 'after:w-full after:scale-x-0'
-                }
+                ${activeId === item.id ? 'nav-underline' : 'nav-underline-hidden'}
               `}
               style={{ fontSize: 'calc(var(--nav-link-base) * var(--nav-scale))' }}
               aria-current={activeId === item.id ? 'true' : undefined}
