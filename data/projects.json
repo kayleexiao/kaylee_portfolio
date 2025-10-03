@@ -9,14 +9,23 @@
     "role": "Full-Stack Developer",
     "technologies": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vercel"],
     "features": [
-      "Responsive design",
-      "Project showcase with detailed descriptions",
-      "Contact form integration",
-      "Blog section for sharing insights"
+      "Responsive design with mobile-first approach",
+      "Dynamic project showcase with detailed descriptions",
+      "Contact form with email integration",
+      "Smooth animations and transitions",
+      "SEO optimized with dynamic metadata"
     ],
     "links": {
       "github": "https://github.com/kayleexiao/kaylee_portfolio"
-    }
+    },
+    "gallery": [
+      "/assets/portfolio/projectspage.png",
+      "/assets/portfolio/aboutpage.png",
+      "/assets/portfolio/experience.png",
+      "/assets/portfolio/contact.png",
+      "/assets/portfolio/aboutpage1.png"
+    ],
+    "goal": "This portfolio website was built to create a professional online presence that showcases my technical skills, projects, and experiences in an engaging and accessible way. Using modern web technologies like Next.js 14 and Tailwind CSS, the site demonstrates both my front-end design capabilities and my understanding of performance optimization, accessibility, and user experience principles. The goal is to provide visitors with an intuitive journey through my work while maintaining a cohesive brand identity with soft pink aesthetics and smooth, delightful interactions."
   },
   {
     "slug": "petpals",
@@ -31,18 +40,21 @@
       "Anonymous emotion sharing platform",
       "Real-time chat with supportive community",
       "Mood tracking and reflection tools",
+      "Daily affirmations and mental wellness resources",
       "Safe space for mental health discussions"
     ],
     "links": {
-      "github": "https://github.com/kaylee/petpals",
-      "demo": "https://petpals-demo.vercel.app",
-      "devpost": "https://devpost.com/software/petpals",
-      "figma": "https://figma.com/petpals-design"
+      "github": "https://github.com/ryanwoong/PetPals",
+      "devpost": "https://devpost.com/software/petpals"
     },
     "gallery": [
-      "/images/petpals-1.jpg",
-      "/images/petpals-2.jpg",
-      "/images/petpals-3.jpg"
+      "/assets/petpals/login.jpg",
+      "/assets/petpals/home.jpg",
+      "/assets/petpals/checkin.jpg",
+      "/assets/petpals/journal.jpg",
+      "/assets/petpals/affirmations.jpg",
+      "/assets/petpals/community.jpg",
+      "/assets/petpals/instructions.jpg"
     ],
     "goal": "PetPals was created during a 24-hour hackathon with the theme of peace and inclusion. It was built with the belief that no one should have to face their mental health challenges alone. Too often, people keep their struggles to themselves, unsure of where to turn or worried about being judged. This project creates a safe and anonymous space where users can openly share their feelings, reflect on their emotions, and find comfort in knowing that others may be going through similar experiences. By encouraging kindness, empathy, and genuine connection, PetPals aims to break down barriers around mental health and foster a supportive community where everyone feels heard, accepted, and valued."
   },
@@ -56,20 +68,24 @@
     "role": "Full-Stack Developer",
     "technologies": ["React", "Node.js", "MongoDB", "Express", "CSS"],
     "features": [
-      "Custom workout creation",
-      "Real-time workout sessions",
-      "Progress tracking and analytics",
-      "Social workout sharing"
+      "Custom workout creation and editing",
+      "Real-time workout session controls",
+      "Workout history and progress tracking",
+      "Personalized workout calendar",
+      "Explore community workouts"
     ],
     "links": {
-      "github": "https://github.com/kaylee/fitquest",
-      "demo": "https://fitquest-demo.vercel.app"
+      "github": "https://github.com/kayleexiao/FitQuest"
     },
     "gallery": [
-      "/images/fitquest-1.jpg",
-      "/images/fitquest-2.jpg"
+      "/assets/fitquest/login.png",
+      "/assets/fitquest/calendar.png",
+      "/assets/fitquest/explore.png",
+      "/assets/fitquest/workoutnew.png",
+      "/assets/fitquest/workoutedit.png",
+      "/assets/fitquest/history.png"
     ],
-    "goal": "FitQuest aims to make fitness accessible and engaging for everyone by providing personalized workout experiences and community support."
+    "goal": "FitQuest aims to make fitness accessible and engaging for everyone by providing personalized workout experiences and community support. The application was designed to help users stay motivated and consistent in their fitness journey by offering tools to create, track, and share custom workouts. Whether you're a beginner looking to establish a routine or an experienced athlete seeking to optimize your training, FitQuest provides the flexibility and insights needed to achieve your fitness goals."
   },
   {
     "slug": "revrentals",
@@ -81,17 +97,24 @@
     "role": "Database Developer",
     "technologies": ["MySQL", "PHP", "HTML", "CSS", "JavaScript"],
     "features": [
-      "Property management system",
-      "Tenant and landlord portals",
-      "Rental payment tracking",
-      "Maintenance request system"
+      "Comprehensive property management system",
+      "Separate tenant and landlord portals",
+      "Vehicle garage and parking management",
+      "Maintenance request and tracking system",
+      "Rental marketplace with advanced filtering"
     ],
     "links": {
-      "github": "https://github.com/kaylee/revrentals"
+      "github": "https://github.com/aeMyst/RevRentals"
     },
     "gallery": [
-      "/images/revrentals-1.jpg"
+      "/assets/revrentals/login.png",
+      "/assets/revrentals/marketplace.png",
+      "/assets/revrentals/vehicle.png",
+      "/assets/revrentals/garage.png",
+      "/assets/revrentals/maintenance.png",
+      "/assets/revrentals/notifications.png",
+      "/assets/revrentals/regex.png"
     ],
-    "goal": "RevRentals demonstrates the power of well-designed databases in creating efficient rental management systems for both property owners and tenants."
+    "goal": "RevRentals demonstrates the power of well-designed databases in creating efficient rental management systems for both property owners and tenants. This project showcases a complete full-stack application with a robust MySQL database backend, handling complex relationships between users, properties, vehicles, and maintenance requests. The platform provides a seamless experience for landlords to manage their properties while giving tenants easy access to essential services, demonstrating best practices in database design, query optimization, and user authentication."
   }
 ]
