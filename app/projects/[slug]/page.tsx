@@ -31,6 +31,7 @@ interface Project {
     devpost?: string
     figma?: string
     report?: string
+    drive?: string
   }
   gallery?: string[]
   goal?: string
@@ -144,7 +145,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   <h1 className="text-[2.44rem] sm:text-[3.25rem] md:text-[4.06rem] font-bold text-ink mb-3 leading-tight">
                     {project.title}
                   </h1>
-                  <p className="text-[0.9rem] sm:text-[1.3rem] text-ink/70 leading-relaxed max-w-3xl">
+                  <p className="text-[0.9rem] sm:text-[1.3rem] text-ink/70 leading-relaxed max-w-3xl whitespace-pre-line">
                     {project.description}
                   </p>
                 </div>
@@ -261,6 +262,18 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                       <ExternalLink className="w-3.5 h-3.5" />
                     </a>
                   )}
+                  {project.links.drive && (
+                    <a
+                      href={project.links.drive}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-rose-400 text-rose-600 hover:bg-rose-50 active:translate-y-0.5 transition-all duration-200 font-medium text-[1rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 focus-visible:ring-offset-2"
+                    >
+                      <Icon name="drive" className="w-5 h-5" alt="" />
+                      <span>Drive</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
@@ -272,7 +285,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       {project.gallery && project.gallery.length > 0 && (
         <section className="py-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <StarDivider />
+            <StarDivider lengthPreset="short" />
             <h2 className="text-[1.95rem] sm:text-[2.44rem] font-bold text-center text-ink mb-8 mt-6">
               PROJECT GALLERY
             </h2>
@@ -288,7 +301,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       {project.goal && (
         <section className="py-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <StarDivider />
+            <StarDivider lengthPreset="short" />
             <h2 className="text-[1.95rem] sm:text-[2.44rem] font-bold text-center text-ink mb-8 mt-6">
               PROJECT GOAL
             </h2>
@@ -310,12 +323,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               {prev ? (
                 <Link
                   href={`/projects/${prev.slug}`}
-                  className="group inline-flex items-center gap-2 text-rose-600 hover:text-rose-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 focus-visible:ring-offset-2 rounded-lg p-2"
+                  className="group inline-flex items-center gap-2 text-rose-600 hover:text-rose-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 focus-visible:ring-offset-2 rounded-lg p-2"
                 >
-                  <ChevronLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+                  <ChevronLeft className="w-[2.2rem] h-[2.2rem] group-hover:-translate-x-1 transition-transform" />
                   <div className="hidden sm:block">
-                    <p className="text-xs text-ink/50 uppercase tracking-wide">Prev</p>
-                    <p className="font-medium text-sm">{prev.title}</p>
+                    <p className="text-medium text-ink/50 uppercase tracking-wide">Prev</p>
+                    <p className="font-medium text-lg">{prev.title}</p>
                   </div>
                   <span className="sm:hidden text-sm font-medium">Prev</span>
                 </Link>
@@ -328,10 +341,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <div className="flex justify-center">
               <Link
                 href="/#projects"
-                className="group inline-flex flex-col items-center gap-1 text-rose-600 hover:text-rose-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 focus-visible:ring-offset-2 rounded-lg p-2"
+                className="group inline-flex flex-col items-center gap-1 text-rose-600 hover:text-rose-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 focus-visible:ring-offset-2 rounded-lg p-2"
               >
-                <Icon name="project-home" className="w-6 h-6 group-hover:scale-110 transition-transform" alt="" />
-                <span className="text-xs font-semibold tracking-wider">HOME</span>
+                <Icon name="project-home" className="w-[3rem] h-[3rem] group-hover:scale-110 transition-transform" alt="" />
+                <span className="text-medium font-semibold tracking-wider">HOME</span>
               </Link>
             </div>
 
@@ -340,14 +353,14 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               {next ? (
                 <Link
                   href={`/projects/${next.slug}`}
-                  className="group inline-flex items-center gap-2 text-rose-600 hover:text-rose-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 focus-visible:ring-offset-2 rounded-lg p-2"
+                  className="group inline-flex items-center gap-2 text-rose-600 hover:text-rose-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 focus-visible:ring-offset-2 rounded-lg p-2"
                 >
                   <span className="sm:hidden text-sm font-medium">Next</span>
                   <div className="hidden sm:block">
-                    <p className="text-xs text-ink/50 uppercase tracking-wide">Next</p>
-                    <p className="font-medium text-sm">{next.title}</p>
+                    <p className="text-medium text-ink/50 uppercase tracking-wide">Next</p>
+                    <p className="font-medium text-lg">{next.title}</p>
                   </div>
-                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <ChevronRight className="w-[2.2rem] h-[2.2rem] group-hover:translate-x-1 transition-transform" />
                 </Link>
               ) : (
                 <div className="opacity-0 pointer-events-none">-</div>

@@ -20,18 +20,18 @@
       "figma": "https://www.figma.com/design/a0FIqbvWyjsFwl3iF5AcC8/Kaylee-Portfolio?node-id=29-6&m=dev&t=VC7r0Y1tOpZvzshQ-1"
     },
     "gallery": [
-      "/assets/portfolio/projectspage.png",
-      "/assets/portfolio/aboutpage.png",
+      "/assets/portfolio/about.png",
+      "/assets/portfolio/aboutdescription.png",
       "/assets/portfolio/experience.png",
-      "/assets/portfolio/contact.png",
-      "/assets/portfolio/aboutpage1.png"
+      "/assets/portfolio/projects.png",
+      "/assets/portfolio/contact.png"
     ],
-    "goal": "This portfolio website was built to create a professional online presence that showcases my technical skills, projects, and experiences in an engaging and accessible way. Using modern web technologies like Next.js 14 and Tailwind CSS, the site demonstrates both my front-end design capabilities and my understanding of performance optimization, accessibility, and user experience principles. The goal is to provide visitors with an intuitive journey through my work while maintaining a cohesive brand identity with soft pink aesthetics and smooth, delightful interactions."
+    "goal": "This portfolio website was built to create a professional online presence that showcases my technical skills, projects, and experiences in an engaging and accessible way. Using modern web technologies like Next.js 14 and Tailwind CSS, the site demonstrates both my front-end design capabilities and my understanding of performance optimization, accessibility, and user experience principles. The goal is to provide visitors with an intuitive journey through my work while maintaining a cohesive brand identity with soft star aesthetics and smooth, simple interactions."
   },
   {
     "slug": "petpals",
     "title": "PetPals",
-    "description": "🌟Second place hackathon project.\nAn anonymous online platform designed to help users reflect on their emotions and connect with others in a supportive and uplifting environment.",
+    "description": "🌟Second place hackathon project.\n An anonymous online platform designed to help users reflect on their emotions and connect with others in a supportive and uplifting environment.",
     "image": "/assets/petpals/logo.gif",
     "date": "Nov 2024",
     "duration": "24 Hours",
@@ -80,7 +80,8 @@
     "links": {
       "github": "https://github.com/kayleexiao/FitQuest",
       "figma": "https://www.figma.com/design/bqF2amgPLUgwyVNduYjd2p/FitQuest?node-id=0-1&m=dev&t=TDvbkPwLePA73Z3U-1",
-      "demo": "https://fitquest481.vercel.app/login"
+      "demo": "https://fitquest481.vercel.app/",
+      "drive": "https://drive.google.com/drive/folders/1QwErEepsIYzUyNNdWYG7jMgynHMbn5ZF?usp=sharing"
     },
     "gallery": [
       "/assets/fitquest/login.png",
@@ -90,7 +91,7 @@
       "/assets/fitquest/workoutedit.png",
       "/assets/fitquest/history.png"
     ],
-    "goal": "FitQuest aims to make fitness accessible and engaging for everyone by providing personalized workout experiences and community support. The application was designed to help users stay motivated and consistent in their fitness journey by offering tools to create, track, and share custom workouts. Whether you're a beginner looking to establish a routine or an experienced athlete seeking to optimize your training, FitQuest provides the flexibility and insights needed to achieve your fitness goals."
+    "goal": "FitQuest aims to make fitness accessible and engaging for everyone by providing personalized workout experiences and community support. The product is intentionally optimized for use on phones, with responsive layouts and touch-friendly controls, recognizing that laptops are impractical in the gym. Built for a Human–Computer Interaction course, working with others, the web app went through multiple iterations following a task-centered design process, including scenario definition, and low- to high-fidelity prototyping. The result is a product that helps people stay motivated and consistent by offering tools to create, track, and share custom workouts. Whether you are starting a routine or optimizing advanced training, FitQuest provides the flexibility and insights needed to reach your goals."
   },
   {
     "slug": "revrentals",

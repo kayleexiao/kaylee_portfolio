@@ -13,8 +13,8 @@ interface ProjectGalleryProps {
   height?: string
   /** Whether to show dot indicators (default: true) */
   showDots?: boolean
-  /** Arrow placement offset from card edges (default: -3rem) */
-  arrowOffset?: string
+  /** Fit mode: 'height' (default, no crop) or 'cover' (fill container) */
+  fitMode?: 'height' | 'cover'
   className?: string
 }
 
@@ -23,7 +23,7 @@ export default function ProjectGallery({
   alt = 'Project screenshot',
   height = 'clamp(320px, 50vw, 520px)',
   showDots = true,
-  arrowOffset = '-3rem',
+  fitMode = 'height',
   className
 }: ProjectGalleryProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -109,10 +109,10 @@ export default function ProjectGallery({
 
   return (
     <div className={cn('relative w-full', className)}>
-      {/* Main Gallery Container */}
+      {/* Main Gallery Container - zero padding */}
       <div 
         ref={containerRef}
-        className="relative w-full overflow-hidden"
+        className="relative w-full overflow-hidden bg-rose-50/30 rounded-2xl border border-rose-200/50 shadow-pink"
         style={{ height }}
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
@@ -125,67 +125,69 @@ export default function ProjectGallery({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: animationDuration, ease: 'easeInOut' }}
-            className="absolute inset-0 flex items-center justify-center"
+            className="absolute inset-0 flex items-stretch justify-center"
           >
-            {/* Image wrapper with consistent styling */}
-            <div className="relative w-full h-full max-w-5xl mx-auto px-4">
-              <div className="relative w-full h-full rounded-2xl overflow-hidden border border-rose-200/50 shadow-pink">
-                <Image
-                  src={images[currentIndex]}
-                  alt={`${alt} ${currentIndex + 1} of ${images.length}`}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
-                  priority={currentIndex === 0}
-                  loading={currentIndex === 0 ? 'eager' : 'lazy'}
-                />
-              </div>
+            {/* Height-first image wrapper - fills 100% */}
+            <div className="relative h-full w-auto max-w-full flex items-center justify-center">
+              <Image
+                src={images[currentIndex]}
+                alt={`${alt} ${currentIndex + 1} of ${images.length}`}
+                width={1200}
+                height={800}
+                className={cn(
+                  "h-full w-auto max-h-full object-contain block",
+                  fitMode === 'cover' && "object-cover w-full"
+                )}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
+                priority={currentIndex === 0}
+                loading={currentIndex === 0 ? 'eager' : 'lazy'}
+              />
             </div>
           </motion.div>
         </AnimatePresence>
-
-        {/* Navigation Arrows - positioned outside card edges */}
-        {images.length > 1 && (
-          <>
-            <button
-              onClick={goToPrevious}
-              style={{ left: arrowOffset }}
-              className="absolute top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/90 backdrop-blur-sm border border-rose-200/50 shadow-pink hover:shadow-pink-hover hover:scale-110 active:scale-95 transition-all duration-200 flex items-center justify-center text-rose-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 focus-visible:ring-offset-2"
-              aria-label={`Previous image (${currentIndex === 0 ? images.length : currentIndex} of ${images.length})`}
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-            
-            <button
-              onClick={goToNext}
-              style={{ right: arrowOffset }}
-              className="absolute top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/90 backdrop-blur-sm border border-rose-200/50 shadow-pink hover:shadow-pink-hover hover:scale-110 active:scale-95 transition-all duration-200 flex items-center justify-center text-rose-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 focus-visible:ring-offset-2"
-              aria-label={`Next image (${currentIndex + 2 > images.length ? 1 : currentIndex + 2} of ${images.length})`}
-            >
-              <ChevronRight className="w-6 h-6" />
-            </button>
-          </>
-        )}
       </div>
 
-      {/* Dots Indicator */}
-      {images.length > 1 && showDots && (
-        <div className="flex justify-center gap-2 mt-6" role="tablist" aria-label="Gallery navigation">
-          {images.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToSlide(index)}
-              role="tab"
-              aria-selected={index === currentIndex}
-              aria-label={`Go to slide ${index + 1} of ${images.length}`}
-              className={cn(
-                'w-2.5 h-2.5 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 focus-visible:ring-offset-2',
-                index === currentIndex 
-                  ? 'bg-rose-500 scale-125 shadow-sm' 
-                  : 'bg-rose-200 hover:bg-rose-300 hover:scale-110'
-              )}
-            />
-          ))}
+      {/* Bottom Controls Toolbar */}
+      {images.length > 1 && (
+        <div className="flex items-center justify-center gap-5 mt-5" role="toolbar" aria-label="Gallery controls">
+          {/* Left Arrow */}
+          <button
+            onClick={goToPrevious}
+            className="w-11 h-11 rounded-full bg-white/90 backdrop-blur-sm border border-rose-200/50 shadow-sm hover:shadow-pink hover:scale-110 active:scale-95 transition-all duration-200 flex items-center justify-center text-rose-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 focus-visible:ring-offset-2"
+            aria-label={`Previous image (${currentIndex === 0 ? images.length : currentIndex} of ${images.length})`}
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+
+          {/* Dots Indicator */}
+          {showDots && (
+            <div className="flex gap-2" role="tablist" aria-label="Gallery navigation">
+              {images.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  role="tab"
+                  aria-selected={index === currentIndex}
+                  aria-label={`Go to slide ${index + 1} of ${images.length}`}
+                  className={cn(
+                    'w-2.5 h-2.5 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 focus-visible:ring-offset-2',
+                    index === currentIndex 
+                      ? 'bg-rose-500 scale-125 shadow-sm' 
+                      : 'bg-rose-200 hover:bg-rose-300 hover:scale-110'
+                  )}
+                />
+              ))}
+            </div>
+          )}
+
+          {/* Right Arrow */}
+          <button
+            onClick={goToNext}
+            className="w-11 h-11 rounded-full bg-white/90 backdrop-blur-sm border border-rose-200/50 shadow-sm hover:shadow-pink hover:scale-110 active:scale-95 transition-all duration-200 flex items-center justify-center text-rose-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 focus-visible:ring-offset-2"
+            aria-label={`Next image (${currentIndex + 2 > images.length ? 1 : currentIndex + 2} of ${images.length})`}
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
         </div>
       )}
     </div>

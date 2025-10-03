@@ -34,6 +34,7 @@ const iconMap = {
   'figma': '/assets/icons/figma.svg',
   'devpost': '/assets/icons/devpost.svg',
   'live': '/assets/icons/live.svg',
+  'drive': '/assets/icons/drive.svg',
 } as const
 
 type IconName = keyof typeof iconMap
