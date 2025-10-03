@@ -31,6 +31,10 @@ const iconMap = {
   'tech-pytorch': '/assets/icons/tech-pytorch.svg',
   'tech-react': '/assets/icons/tech-react.svg',
   'tech-stack-star': '/assets/icons/tech-stack-star.svg',
+  'figma': '/assets/icons/figma.svg',
+  'devpost': '/assets/icons/devpost.svg',
+  'live': '/assets/icons/live.svg',
+  'drive': '/assets/icons/drive.svg',
 } as const
 
 type IconName = keyof typeof iconMap
