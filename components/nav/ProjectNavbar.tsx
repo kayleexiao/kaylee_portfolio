@@ -60,12 +60,7 @@ export default function ProjectNavbar() {
               href={item.href}
               className={`
                 relative text-[19px] md:text-[20px] text-ink transition-opacity hover:opacity-80 no-underline
-                after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:rounded-full 
-                after:bg-[var(--rose-500)] after:transition-transform after:origin-left
-                ${item.id === 'projects'
-                  ? 'after:w-full after:scale-x-100' 
-                  : 'after:w-full after:scale-x-0'
-                }
+                ${item.id === 'projects' ? 'nav-underline' : 'nav-underline-hidden'}
               `}
               style={{ fontSize: 'calc(var(--nav-link-base) * var(--nav-scale))' }}
               aria-current={item.id === 'projects' ? 'page' : undefined}
