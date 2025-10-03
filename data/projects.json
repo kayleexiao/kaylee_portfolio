@@ -67,7 +67,7 @@
     "description": "A fitness tracking application that helps users create custom workouts, control workout sessions, and track their favorite workouts.",
     "image": "/assets/fitquest/logo.png",
     "date": "Oct 2024",
-    "duration": "2 Weeks",
+    "duration": "2 Months",
     "role": "Full-Stack Developer",
     "technologies": ["React", "Node.js", "MongoDB", "Express", "CSS"],
     "features": [
@@ -91,7 +91,7 @@
       "/assets/fitquest/workoutedit.png",
       "/assets/fitquest/history.png"
     ],
-    "goal": "FitQuest aims to make fitness accessible and engaging for everyone by providing personalized workout experiences and community support. The product is intentionally optimized for use on phones, with responsive layouts and touch-friendly controls, recognizing that laptops are impractical in the gym. Built for a Human–Computer Interaction course, working with others, the web app went through multiple iterations following a task-centered design process, including scenario definition, and low- to high-fidelity prototyping. The result is a product that helps people stay motivated and consistent by offering tools to create, track, and share custom workouts. Whether you are starting a routine or optimizing advanced training, FitQuest provides the flexibility and insights needed to reach your goals."
+    "goal": "FitQuest aims to make fitness accessible and engaging for everyone by providing personalized workout experiences and community support. The product is intentionally optimized for use on phones, with responsive layouts and touch-friendly controls, recognizing that laptops are impractical in the gym. Built for a Human–Computer Interaction course, working with others, the web app went through multiple iterations following a task-centered design process, including scenario definition and low- to high-fidelity prototyping. The result is a product that helps people stay motivated and consistent by offering tools to create, track, and share custom workouts. Whether you are starting a routine or optimizing advanced training, FitQuest provides the flexibility and insights needed to reach your goals."
   },
   {
     "slug": "revrentals",
@@ -99,8 +99,8 @@
     "description": "A database-driven platform showcasing the integration of a relational database with a front-end application for managing rental properties.",
     "image": "/assets/revrentals/logo.png",
     "date": "Sep 2024",
-    "duration": "3 Weeks",
-    "role": "Database Developer",
+    "duration": "3 Months",
+    "role": "Full-Stack Developer",
     "technologies": ["MySQL", "PHP", "HTML", "CSS", "JavaScript"],
     "features": [
       "Comprehensive property management system",
