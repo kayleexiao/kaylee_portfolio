@@ -16,7 +16,8 @@
       "SEO optimized with dynamic metadata"
     ],
     "links": {
-      "github": "https://github.com/kayleexiao/kaylee_portfolio"
+      "github": "https://github.com/kayleexiao/kaylee_portfolio",
+      "figma": "https://www.figma.com/design/a0FIqbvWyjsFwl3iF5AcC8/Kaylee-Portfolio?node-id=29-6&m=dev&t=VC7r0Y1tOpZvzshQ-1"
     },
     "gallery": [
       "/assets/portfolio/projectspage.png",
@@ -45,7 +46,9 @@
     ],
     "links": {
       "github": "https://github.com/ryanwoong/PetPals",
-      "devpost": "https://devpost.com/software/petpals"
+      "figma": "https://www.figma.com/design/vTxiJhmGvAsV5Qr9qLszZR/PetPals-Planning?node-id=0-1&m=dev&t=OF7yUhJiEsGB35Zl-1",
+      "devpost": "https://devpost.com/software/petpals-9jb2s1",
+      "demo": "https://www.youtube.com/watch?v=hSaXFfds34c"
     },
     "gallery": [
       "/assets/petpals/login.jpg",
@@ -75,7 +78,9 @@
       "Explore community workouts"
     ],
     "links": {
-      "github": "https://github.com/kayleexiao/FitQuest"
+      "github": "https://github.com/kayleexiao/FitQuest",
+      "figma": "https://www.figma.com/design/bqF2amgPLUgwyVNduYjd2p/FitQuest?node-id=0-1&m=dev&t=TDvbkPwLePA73Z3U-1",
+      "demo": "https://fitquest481.vercel.app/login"
     },
     "gallery": [
       "/assets/fitquest/login.png",
@@ -104,7 +109,9 @@
       "Rental marketplace with advanced filtering"
     ],
     "links": {
-      "github": "https://github.com/aeMyst/RevRentals"
+      "github": "https://github.com/aeMyst/RevRentals",
+      "figma": "https://www.figma.com/design/ohdDln0Ea2nePgyS1Smmol/RevRentals-Interface?node-id=1-2&m=dev&t=QEd9PR0t4wmUqhRZ-1",
+      "report": "/assets/revrentals/revrentals_report.pdf"
     },
     "gallery": [
       "/assets/revrentals/login.png",
