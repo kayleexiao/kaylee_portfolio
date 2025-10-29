@@ -3,21 +3,10 @@
 import Wide from '@/components/layout/Wide'
 import Reveal from '@/components/motion/Reveal'
 import Icon from '@/components/ui/Icon'
+import experienceData from '@/data/experience.json'
 import { useEffect, useRef, useState } from 'react'
 
-const experienceData = [
-  {
-    role: 'Undergraduate Research Assistant',
-    organization: 'GSI Lab - University of Calgary',
-    period: 'May 2025 - Aug 2025',
-    responsibilities: [
-      'Designing and training machine learning models on multispectral and high-resolution satellite imagery',
-      'Worked on an Alberta-focused Sentinel-2 classification project using deep learning architectures (Mamba, UNet, HRNet)',
-      'Assisted in developing data pipelines for preprocessing, model training, and validation using Python, PyTorch, and using geospatial applications for reviewing results (QGIS)',
-      'Advancing research in environmental monitoring, sustainable land management, climate resilience, and urban development planning'
-    ]
-  }
-]
+// experience data is loaded from `data/experience.json`
 
 export default function Experience() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
@@ -127,6 +116,18 @@ export default function Experience() {
                     <p className="text-ink/70 font-medium">
                       {exp.organization}
                     </p>
+                    {exp.link && (
+                      <div className="mt-1">
+                        <a
+                          href={exp.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm text-rose-600 hover:underline break-all"
+                        >
+                          {exp.link}
+                        </a>
+                      </div>
+                    )}
                   </div>
                   <div className="flex items-center gap-4">
                     <span className="text-base md:text-lg text-ink/60 font-medium">

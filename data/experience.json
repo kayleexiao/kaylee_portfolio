@@ -1,13 +1,14 @@
 [
   {
     "role": "Undergraduate Research Assistant",
-    "organization": "OSI Lab - University of Calgary",
-    "period": "May 2024 - Present",
+    "organization": "GSI Lab - University of Calgary",
+    "link": "https://www.gsilab.ca",
+    "period": "May 2025 - Aug 2025",
     "responsibilities": [
-      "Developing and training machine learning models on multi-layered and high-resolution satellite imagery to improve the precision and speed of land cover mapping",
-      "Collaborating closely with PhD students and professors on a major Classification project, applying deep learning architectures such as CNNs and RNNs for pixel-level analysis",
-      "Designing data pipelines for preprocessing, model training, and validation using Python, with geospatial frameworks like GDAL and TensorFlow",
-      "Conducting research that impacts environmental understanding and decision-making in areas such as sustainable land management, disaster response, and urban development planning"
+      "Designing and training machine learning models on multispectral and high-resolution satellite imagery",
+      "Worked on an Alberta-focused Sentinel-2 classification project using deep learning architectures (Mamba, UNet, HRNet)",
+      "Assisted in developing data pipelines for preprocessing, model training, and validation using Python, PyTorch, and using geospatial applications for reviewing results (QGIS)",
+      "Advancing research in environmental monitoring, sustainable land management, climate resilience, and urban development planning"
     ]
   }
 ]
