@@ -9,11 +9,11 @@ const experienceData = [
   {
     role: 'Undergraduate Research Assistant',
     organization: 'GSI Lab - University of Calgary',
-    period: 'May 2025 - Present',
+    period: 'May 2025 - Aug 2025',
     responsibilities: [
       'Designing and training machine learning models on multispectral and high-resolution satellite imagery',
-      'Working on an Alberta-focused Sentinel-2 classification project using deep learning architectures (UNet, HRNet)',
-      'Developing data pipelines for preprocessing, model training, and validation using Python, PyTorch, and geospatial frameworks (GOAL)',
+      'Worked on an Alberta-focused Sentinel-2 classification project using deep learning architectures (Mamba, UNet, HRNet)',
+      'Assisted in developing data pipelines for preprocessing, model training, and validation using Python, PyTorch, and using geospatial applications for reviewing results (QGIS)',
       'Advancing research in environmental monitoring, sustainable land management, climate resilience, and urban development planning'
     ]
   }
