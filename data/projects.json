@@ -69,7 +69,7 @@
     "date": "Oct 2024",
     "duration": "2 Months",
     "role": "Full-Stack Developer",
-    "technologies": ["React", "Node.js", "MongoDB", "Express", "CSS"],
+    "technologies": ["React", "Node.js", "CSS", "LocalStorage", "Figma"],
     "features": [
       "Custom workout creation and editing",
       "Real-time workout session controls",
@@ -101,7 +101,7 @@
     "date": "Sep 2024",
     "duration": "3 Months",
     "role": "Full-Stack Developer",
-    "technologies": ["MySQL", "PHP", "HTML", "CSS", "JavaScript"],
+    "technologies": ["MySQL", "Flutter", "Django", "HTML", "REST API"],
     "features": [
       "Comprehensive property management system",
       "Separate tenant and landlord portals",

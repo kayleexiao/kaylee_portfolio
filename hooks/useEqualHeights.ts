@@ -4,6 +4,7 @@ import { RefObject, useEffect } from 'react'
 
 interface UseEqualHeightsOptions {
   property?: 'minHeight' | 'height'
+  active?: boolean
 }
 
 export function useEqualHeights(
@@ -11,9 +12,20 @@ export function useEqualHeights(
   options: UseEqualHeightsOptions = {}
 ) {
   const { property = 'minHeight' } = options
+  const active = options.active ?? true
 
   useEffect(() => {
     const elements = refs.map(ref => ref.current).filter(Boolean) as HTMLElement[]
+
+    // If not active, ensure any previously applied inline styles are cleared and do nothing
+    if (!active) {
+      elements.forEach(el => {
+        if (el && el.style) {
+          el.style[property] = ''
+        }
+      })
+      return
+    }
     
     if (elements.length === 0) return
 

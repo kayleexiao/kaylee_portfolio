@@ -85,7 +85,7 @@ export default function TechCarousel({ className }: TechCarouselProps) {
                   <li key={tech.name}>
                     <Icon 
                       name={tech.icon} 
-                      className="h-20 w-20 md:h-24 md:w-24 text-rose-500" 
+                      className="h-16 w-16 md:h-20 md:w-20 text-rose-500" 
                       alt={tech.name} 
                     />
                   </li>

@@ -6,21 +6,30 @@ import Card from '@/components/ui/Card'
 import Icon from '@/components/ui/Icon'
 import TechCarousel from '@/components/ui/TechCarousel'
 import { useEqualHeights } from '@/hooks/useEqualHeights'
-import { useRef } from 'react'
+import { useRef, useEffect, useState } from 'react'
 
 export default function AboutTech() {
   const aboutRef = useRef<HTMLDivElement>(null)
   const techRef = useRef<HTMLDivElement>(null)
   
-  useEqualHeights([aboutRef, techRef], { property: 'minHeight' })
+  const [equalize, setEqualize] = useState(false)
+
+  useEffect(() => {
+    const update = () => setEqualize(window.innerWidth >= 1024) // tailwind lg breakpoint
+    update()
+    window.addEventListener('resize', update)
+    return () => window.removeEventListener('resize', update)
+  }, [])
+
+  useEqualHeights([aboutRef, techRef], { property: 'minHeight', active: equalize })
 
   return (
     <Wide id="about" className="scroll-mt-24 py-16">
       <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch gap-8">
         {/* ABOUT Card */}
-        <div className="lg:col-span-5">
+  <div className="lg:col-span-5">
           <Reveal>
-            <Card ref={aboutRef} className="h-full flex flex-col rounded-3xl px-8 md:px-10 py-8 md:py-10 bg-[var(--rose-500)] text-[var(--surface)] shadow-pink">
+            <Card ref={aboutRef} className="h-full flex flex-col rounded-3xl px-6 md:px-8 py-6 md:py-8 bg-[var(--rose-500)] text-[var(--surface)] shadow-pink">
               {/* Title row stays top-left */}
               <div className="flex items-center gap-3 shrink-0 md:mb-5">
                 <Icon name="about-star" className="h-6 w-6 md:h-7 md:w-7 text-white" alt="" />
@@ -44,9 +53,9 @@ export default function AboutTech() {
         </div>
         
         {/* TECH STACK Card */}
-        <div className="lg:col-span-7">
+  <div className="lg:col-span-7">
           <Reveal>
-            <Card ref={techRef} className="h-full flex flex-col rounded-3xl px-6 md:px-8 py-6 md:py-8 bg-[rgba(255,255,255,0.9)] shadow-pink">
+            <Card ref={techRef} className="h-full flex flex-col rounded-3xl px-6 md:px-8 py-6 md:py-8 bg-[rgba(255,255,255,0.9)] shadow-pink max-h-[520px] lg:max-h-[460px]">
               <div className="mb-4 md:mb-5 flex items-center gap-3 shrink-0">
                 <img 
                   src="/assets/icons/tech-stack-star.svg" 
