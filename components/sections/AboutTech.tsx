@@ -6,7 +6,7 @@ import Card from '@/components/ui/Card'
 import Icon from '@/components/ui/Icon'
 import TechCarousel from '@/components/ui/TechCarousel'
 import { useEqualHeights } from '@/hooks/useEqualHeights'
-import { useRef, useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function AboutTech() {
   const aboutRef = useRef<HTMLDivElement>(null)
